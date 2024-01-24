@@ -1,6 +1,7 @@
 import FixedBottomButton from '@/components/shared/FixedBottomButton'
 import Flex from '@/components/shared/Flex'
 import { css } from '@emotion/react'
+import { motion } from 'framer-motion'
 import ListRow from '@/components/shared/ListRow'
 import Text from '@/components/shared/Text'
 import Top from '@/components/shared/Top'
@@ -28,15 +29,27 @@ function CardPage() {
       <ul>
         {benefit.map((text, index) => {
           return (
-            <ListRow
-              left={<IconCheck></IconCheck>}
-              contents={
-                <ListRow.Texts title={`혜택 ${index + 1}`} subTitle={text} />
-              }
-            ></ListRow>
+            <motion.li
+              initial={{ opacity: 0, translateX: -90 }}
+              whileInView={{ opacity: 1, translateX: 0 }}
+              transition={{
+                duration: 0.7,
+                ease: 'easeInOut',
+                delay: index * 0.1,
+              }}
+            >
+              <ListRow
+                as="div"
+                left={<IconCheck></IconCheck>}
+                contents={
+                  <ListRow.Texts title={`혜택 ${index + 1}`} subTitle={text} />
+                }
+              />
+            </motion.li>
           )
         })}
       </ul>
+
       {promotion != null ? (
         <Flex direction="column" css={termsContainerStyles}>
           <Text bold={true}>유의사항</Text>
