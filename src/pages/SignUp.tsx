@@ -5,10 +5,12 @@ import Form from '@/components/signup/Form'
 import { FormValues } from '@/models/signup'
 import { auth, store } from '@remote/firebase'
 import { COLLECTIONS } from '@/constants'
+import { useNavigate } from 'react-router-dom'
 
 type Props = {}
 
 function SignUp() {
+  const navigate = useNavigate()
   const handleSubmit = async (formValues: FormValues) => {
     const { email, password, name } = formValues
     const { user } = await createUserWithEmailAndPassword(auth, email, password)
@@ -24,7 +26,7 @@ function SignUp() {
     }
 
     await setDoc(doc(collection(store, COLLECTIONS.USER), user.uid), newUser)
-    // TODO: 로그인
+    navigate('/')
   }
 
   return (
