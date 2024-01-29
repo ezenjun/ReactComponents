@@ -6,11 +6,13 @@
       "@components/*": ["src/components/*"],
       "@styles/*": ["src/styes/*"],
       "@shared/*": ["src/components/shared/*"],
+      "@apply/*": ["src/components/apply/*"],
       "@contexts/*": ["src/contexts/*"],
       "@models/*": ["src/models/*"],
       "@pages/*": ["src/pages/*"],
       "@remote/*": ["src/remote/*"],
-      "@constants/*": ["src/constants/index"]
+      "@constants": ["src/constants/index"],
+      "@constants/*": ["src/constants/*"]
     }
   }
 }
